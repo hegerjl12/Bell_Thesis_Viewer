@@ -28,7 +28,7 @@ with st.spinner("Connecting to database..."):
      Image5DB = deta.Base("image5db")
 
 
-with st.container:
+with st.container():
     col1, col2, col3 = st.columns(3)
 
     with col1:
