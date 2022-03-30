@@ -14,6 +14,8 @@ st.set_page_config(
      layout="wide",
 )
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 st.title("Selina's Thesis")
 
 with st.spinner("Connecting to database..."):
@@ -26,40 +28,44 @@ with st.spinner("Connecting to database..."):
      Image5DB = deta.Base("image5db")
 
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
+with st.container:
+    col1, col2, col3 = st.columns(3)
 
-total_words = []
-res = Image1DB.fetch()
-all_items = res.items
-for item in all_items:
-    total_words.append(item.get('words'))
-    
-text = " ".join(total_words)
-word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-fig = plt.imshow(word_cloud, interpolation='bilinear')
-plt.axis("off")
-st.pyplot(plt.show())
+    with col1:
+        total_words = []
+        res = Image1DB.fetch()
+        all_items = res.items
+        for item in all_items:
+            total_words.append(item.get('words'))
+            
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
 
-total_words = []
-res = Image2DB.fetch()
-all_items = res.items
-for item in all_items:
-    total_words.append(item.get('words'))
+    with col2:
+        total_words = []
+        res = Image2DB.fetch()
+        all_items = res.items
+        for item in all_items:
+            total_words.append(item.get('words'))
 
-text = " ".join(total_words)
-word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-fig = plt.imshow(word_cloud, interpolation='bilinear')
-plt.axis("off")
-st.pyplot(plt.show())
-    
-total_words = []
-res = Image3DB.fetch()
-all_items = res.items
-for item in all_items:
-    total_words.append(item.get('words'))
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
 
-text = " ".join(total_words)
-word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-fig = plt.imshow(word_cloud, interpolation='bilinear')
-plt.axis("off")
-st.pyplot(plt.show())
+    with col3:
+        total_words = []
+        res = Image3DB.fetch()
+        all_items = res.items
+        for item in all_items:
+            total_words.append(item.get('words'))
+
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
