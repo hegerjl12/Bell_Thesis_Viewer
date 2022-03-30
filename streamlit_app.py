@@ -18,8 +18,9 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.title("Selina's Thesis")
 
+
+# connect to databases
 with st.spinner("Connecting to database..."):
-     # connect to databases
      deta = Deta(st.secrets["deta_key"])
      Image1DB = deta.Base("image1db")
      Image2DB = deta.Base("image2db")
@@ -27,10 +28,11 @@ with st.spinner("Connecting to database..."):
      Image4DB = deta.Base("image4db")
      Image5DB = deta.Base("image5db")
 
-
+# make columns
 with st.container():
     col1, col2, col3 = st.columns(3)
-
+    
+    # image1 wordcloud
     with col1:
         total_words = []
         res = Image1DB.fetch()
@@ -44,6 +46,7 @@ with st.container():
         plt.axis("off")
         st.pyplot(plt.show())
 
+    # image 2 wordcloud
     with col2:
         total_words = []
         res = Image2DB.fetch()
@@ -57,6 +60,7 @@ with st.container():
         plt.axis("off")
         st.pyplot(plt.show())
 
+    #image 3 wordcloud
     with col3:
         total_words = []
         res = Image3DB.fetch()
