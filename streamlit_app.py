@@ -9,48 +9,20 @@ import random
 import time
 
 @st.cache(ttl=10)
-def refresh_and_print(col1, col2, col3):
-    # image1 wordcloud
-    with col1:
-        total_words = []
-        res = Image1DB.fetch()
-        all_items = res.items
-        for item in all_items:
-            total_words.append(item.get('words'))
-            
-        text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-        fig = plt.imshow(word_cloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot(plt.show())
+def refreshDB():
 
-    # image 2 wordcloud
-    with col2:
-        total_words = []
-        res = Image2DB.fetch()
-        all_items = res.items
-        for item in all_items:
-            total_words.append(item.get('words'))
+    res1 = Image1DB.fetch()
+    all_items1 = res.items
 
-        text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-        fig = plt.imshow(word_cloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot(plt.show())
 
-    #image 3 wordcloud
-    with col3:
-        total_words = []
-        res = Image3DB.fetch()
-        all_items = res.items
-        for item in all_items:
-            total_words.append(item.get('words'))
+    res2 = Image2DB.fetch()
+    all_items2 = res.items
 
-        text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-        fig = plt.imshow(word_cloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot(plt.show())
+
+    res3 = Image3DB.fetch()
+    all_items3 = res.items
+
+    return all_items1, all_items2, all_items3
 
 
 
@@ -77,7 +49,49 @@ with st.spinner("Connecting to database..."):
 with st.container():
     col1, col2, col3 = st.columns(3)
     
-    refresh_and_print(col1, col2, col3)    
+    all_items1, all_items2, all_items3 = refreshDB()  
+
+    # image1 wordcloud
+    with col1:
+        total_words = []
+        #res = Image1DB.fetch()
+        #all_items = res.items
+        for item in all_items1:
+            total_words.append(item.get('words'))
+            
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
+
+    # image 2 wordcloud
+    with col2:
+        total_words = []
+        #res = Image2DB.fetch()
+       # all_items = res.items
+        for item in all_items2:
+            total_words.append(item.get('words'))
+
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
+
+    #image 3 wordcloud
+    with col3:
+        total_words = []
+       # res = Image3DB.fetch()
+       # all_items = res.items
+        for item in all_items3:
+            total_words.append(item.get('words'))
+
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())  
 
 #time.sleep(10)
 #st.experimental_rerun()
