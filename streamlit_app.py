@@ -8,29 +8,8 @@ from deta import Deta
 import random
 import time
 
-# set page config details
-st.set_page_config(
-     page_title="Bell Thesis",
-     page_icon="🔔",
-     layout="wide",
-)
-
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
-st.title("Selina's Thesis")
-
-
-# connect to databases
-with st.spinner("Connecting to database..."):
-     deta = Deta(st.secrets["deta_key"])
-     Image1DB = deta.Base("testdb1")
-     Image2DB = deta.Base("testdb2")
-     Image3DB = deta.Base("testdb3")
-
-# make columns
-with st.container():
-    col1, col2, col3 = st.columns(3)
-    
+@st.cache(ttl=10)
+def refresh_and_print(col1, col2, col3):
     # image1 wordcloud
     with col1:
         total_words = []
@@ -73,5 +52,32 @@ with st.container():
         plt.axis("off")
         st.pyplot(plt.show())
 
-time.sleep(10)
+
+
+# set page config details
+st.set_page_config(
+     page_title="Bell Thesis",
+     page_icon="🔔",
+     layout="wide",
+)
+
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
+st.title("Selina's Thesis")
+
+
+# connect to databases
+with st.spinner("Connecting to database..."):
+     deta = Deta(st.secrets["deta_key"])
+     Image1DB = deta.Base("testdb1")
+     Image2DB = deta.Base("testdb2")
+     Image3DB = deta.Base("testdb3")
+
+# make columns
+with st.container():
+    col1, col2, col3 = st.columns(3)
+    
+    refresh_and_print(col1, col2, col3)    
+
+#time.sleep(10)
 #st.experimental_rerun()
