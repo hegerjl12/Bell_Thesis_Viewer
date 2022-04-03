@@ -22,11 +22,9 @@ st.title("Selina's Thesis")
 # connect to databases
 with st.spinner("Connecting to database..."):
      deta = Deta(st.secrets["deta_key"])
-     Image1DB = deta.Base("image1db")
-     Image2DB = deta.Base("image2db")
-     Image3DB = deta.Base("image3db")
-     Image4DB = deta.Base("image4db")
-     Image5DB = deta.Base("image5db")
+     Image1DB = deta.Base("testdb1")
+     Image2DB = deta.Base("testdb2")
+     Image3DB = deta.Base("testdb3")
 
 # make columns
 with st.container():
