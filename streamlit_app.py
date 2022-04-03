@@ -7,8 +7,8 @@ from wordcloud import WordCloud
 from deta import Deta
 import random
 import time
+from streamlit_autorefresh import st_autorefresh
 
-@st.cache(ttl=10)
 def refreshDB():
 
     res1 = Image1DB.fetch()
@@ -93,5 +93,6 @@ with st.container():
         plt.axis("off")
         st.pyplot(plt.show())  
 
+count = st_autorefresh(interval=10000, limit=100, key="fizzbuzzcounter")
 #time.sleep(10)
 #st.experimental_rerun()

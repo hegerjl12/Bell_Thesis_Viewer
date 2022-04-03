@@ -7,3 +7,4 @@ wordcloud
 matplotlib
 click==8.0
 deta
+streamlit-autorefresh
