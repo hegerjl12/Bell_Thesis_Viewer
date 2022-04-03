@@ -12,11 +12,11 @@ import time
 def refreshDB():
 
     res1 = Image1DB.fetch()
-    all_items1 = res.items
+    all_items1 = res1.items
 
 
     res2 = Image2DB.fetch()
-    all_items2 = res.items
+    all_items2 = res2.items
 
 
     res3 = Image3DB.fetch()
