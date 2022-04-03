@@ -20,7 +20,7 @@ def refreshDB():
 
 
     res3 = Image3DB.fetch()
-    all_items3 = res.items
+    all_items3 = res3.items
 
     return all_items1, all_items2, all_items3
 
