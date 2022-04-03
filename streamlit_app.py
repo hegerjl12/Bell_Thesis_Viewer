@@ -74,4 +74,4 @@ with st.container():
         st.pyplot(plt.show())
 
 time.sleep(10)
-st.experimental_rerun()
+#st.experimental_rerun()
