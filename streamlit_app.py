@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from deta import Deta
 import random
+import time
 
 # set page config details
 st.set_page_config(
@@ -71,3 +72,6 @@ with st.container():
         fig = plt.imshow(word_cloud, interpolation='bilinear')
         plt.axis("off")
         st.pyplot(plt.show())
+
+time.sleep(10)
+st.experimental_rerun()
