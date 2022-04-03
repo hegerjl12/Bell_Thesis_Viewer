@@ -39,7 +39,7 @@ with st.container():
             total_words.append(item.get('words'))
             
         text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        word_cloud = WordCloud(collocations = False, background_color = 'black').generate(text)
         fig = plt.imshow(word_cloud, interpolation='bilinear')
         plt.axis("off")
         st.pyplot(plt.show())
