@@ -22,7 +22,13 @@ def refreshDB():
     res3 = Image3DB.fetch()
     all_items3 = res3.items
 
-    return all_items1, all_items2, all_items3
+    res4 = Image3DB.fetch()
+    all_items4 = res4.items
+
+    res5 = Image3DB.fetch()
+    all_items5 = res5.items
+
+    return all_items1, all_items2, all_items3, all_items4, all_items5
 
 
 
@@ -41,15 +47,17 @@ st.title("Selina's Thesis")
 # connect to databases
 with st.spinner("Connecting to database..."):
      deta = Deta(st.secrets["deta_key"])
-     Image1DB = deta.Base("testdb1")
-     Image2DB = deta.Base("testdb2")
-     Image3DB = deta.Base("testdb3")
+     Image1DB = deta.Base("image1db")
+     Image2DB = deta.Base("image2db")
+     Image3DB = deta.Base("image3db")
+     Image3DB = deta.Base("image4db")
+     Image3DB = deta.Base("image5db")
 
 # make columns
 with st.container():
     col1, col2, col3 = st.columns(3)
     
-    all_items1, all_items2, all_items3 = refreshDB()  
+    all_items1, all_items2, all_items3, all_items4, all_items5 = refreshDB()  
 
     # image1 wordcloud
     with col1:
@@ -79,19 +87,39 @@ with st.container():
         plt.axis("off")
         st.pyplot(plt.show())
 
-    #image 3 wordcloud
-    with col3:
+# make columns
+with st.container():
+    col4, col5 = st.columns(2)
+
+    # image 4 wordcloud
+    with col4:
         total_words = []
-       # res = Image3DB.fetch()
+        #res = Image1DB.fetch()
+        #all_items = res.items
+        for item in all_items4:
+            total_words.append(item.get('words'))
+            
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
+
+    # image 5 wordcloud
+    with col5:
+        total_words = []
+        #res = Image2DB.fetch()
        # all_items = res.items
-        for item in all_items3:
+        for item in all_items5:
             total_words.append(item.get('words'))
 
         text = " ".join(total_words)
         word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
         fig = plt.imshow(word_cloud, interpolation='bilinear')
         plt.axis("off")
-        st.pyplot(plt.show())  
+        st.pyplot(plt.show())
+
+
 
 count = st_autorefresh(interval=10000, limit=100, key="fizzbuzzcounter")
 #time.sleep(10)
