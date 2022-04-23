@@ -14,10 +14,8 @@ def refreshDB():
     res1 = Image1DB.fetch()
     all_items1 = res1.items
 
-
     res2 = Image2DB.fetch()
     all_items2 = res2.items
-
 
     res3 = Image3DB.fetch()
     all_items3 = res3.items
@@ -79,6 +77,20 @@ with st.container():
         #res = Image2DB.fetch()
        # all_items = res.items
         for item in all_items2:
+            total_words.append(item.get('words'))
+
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
+
+        # image 3 wordcloud
+    with col3:
+        total_words = []
+        #res = Image2DB.fetch()
+       # all_items = res.items
+        for item in all_items3:
             total_words.append(item.get('words'))
 
         text = " ".join(total_words)
