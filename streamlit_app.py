@@ -20,10 +20,10 @@ def refreshDB():
     res3 = Image3DB.fetch()
     all_items3 = res3.items
 
-    res4 = Image3DB.fetch()
+    res4 = Image4DB.fetch()
     all_items4 = res4.items
 
-    res5 = Image3DB.fetch()
+    res5 = Image5DB.fetch()
     all_items5 = res5.items
 
     return all_items1, all_items2, all_items3, all_items4, all_items5
