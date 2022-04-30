@@ -53,83 +53,69 @@ with st.spinner("Connecting to database..."):
 
 # make columns
 with st.container():
-    col1, col2, col3 = st.columns(3)
-    
+       
     all_items1, all_items2, all_items3, all_items4, all_items5 = refreshDB()  
 
-    # image1 wordcloud
-    with col1:
-        total_words = []
-        #res = Image1DB.fetch()
-        #all_items = res.items
-        for item in all_items1:
-            total_words.append(item.get('words'))
-            
-        text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-        fig = plt.imshow(word_cloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot(plt.show())
+    total_words = []
+    #res = Image1DB.fetch()
+    #all_items = res.items
+    for item in all_items1:
+        total_words.append(item.get('words'))
+        
+    text = " ".join(total_words)
+    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+    fig = plt.imshow(word_cloud, interpolation='bilinear')
+    plt.axis("off")
+    st.pyplot(plt.show())
 
-    # image 2 wordcloud
-    with col2:
-        total_words = []
-        #res = Image2DB.fetch()
-       # all_items = res.items
-        for item in all_items2:
-            total_words.append(item.get('words'))
+    total_words = []
+    #res = Image2DB.fetch()
+    # all_items = res.items
+    for item in all_items2:
+        total_words.append(item.get('words'))
 
-        text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-        fig = plt.imshow(word_cloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot(plt.show())
+    text = " ".join(total_words)
+    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+    fig = plt.imshow(word_cloud, interpolation='bilinear')
+    plt.axis("off")
+    st.pyplot(plt.show())
 
-        # image 3 wordcloud
-    with col3:
-        total_words = []
-        #res = Image2DB.fetch()
-       # all_items = res.items
-        for item in all_items3:
-            total_words.append(item.get('words'))
 
-        text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-        fig = plt.imshow(word_cloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot(plt.show())
+    total_words = []
+    #res = Image2DB.fetch()
+    # all_items = res.items
+    for item in all_items3:
+        total_words.append(item.get('words'))
 
-# make columns
-with st.container():
-    col4, col5 = st.columns(2)
+    text = " ".join(total_words)
+    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+    fig = plt.imshow(word_cloud, interpolation='bilinear')
+    plt.axis("off")
+    st.pyplot(plt.show())
 
-    # image 4 wordcloud
-    with col4:
-        total_words = []
-        #res = Image1DB.fetch()
-        #all_items = res.items
-        for item in all_items4:
-            total_words.append(item.get('words'))
-            
-        text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-        fig = plt.imshow(word_cloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot(plt.show())
+    total_words = []
+    #res = Image1DB.fetch()
+    #all_items = res.items
+    for item in all_items4:
+        total_words.append(item.get('words'))
+        
+    text = " ".join(total_words)
+    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+    fig = plt.imshow(word_cloud, interpolation='bilinear')
+    plt.axis("off")
+    st.pyplot(plt.show())
 
-    # image 5 wordcloud
-    with col5:
-        total_words = []
-        #res = Image2DB.fetch()
-       # all_items = res.items
-        for item in all_items5:
-            total_words.append(item.get('words'))
+    total_words = []
+    #res = Image2DB.fetch()
+    # all_items = res.items
+    for item in all_items5:
+        total_words.append(item.get('words'))
 
-        text = " ".join(total_words)
-        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-        fig = plt.imshow(word_cloud, interpolation='bilinear')
-        plt.axis("off")
-        st.pyplot(plt.show())
+    text = " ".join(total_words)
+    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+    fig = plt.imshow(word_cloud, interpolation='bilinear')
+    plt.axis("off")
+    st.pyplot(plt.show())
 
 
 
