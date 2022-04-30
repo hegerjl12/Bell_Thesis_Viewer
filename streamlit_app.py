@@ -9,6 +9,12 @@ import random
 import time
 from streamlit_autorefresh import st_autorefresh
 
+if 'images_choice' not in st.session_state:
+     st.session_state.images_choice = [1, 2, 3, 4, 5]
+
+if 'i' not in st.session_state:
+     st.session_state.i = 1
+    
 def refreshDB():
 
     res1 = Image1DB.fetch()
@@ -56,66 +62,62 @@ with st.container():
        
     all_items1, all_items2, all_items3, all_items4, all_items5 = refreshDB()  
 
-    total_words = []
-    #res = Image1DB.fetch()
-    #all_items = res.items
-    for item in all_items1:
-        total_words.append(item.get('words'))
-        
-    text = " ".join(total_words)
-    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-    fig = plt.imshow(word_cloud, interpolation='bilinear')
-    plt.axis("off")
-    st.pyplot(plt.show())
+    st.session_state.i = random.choice(st.session_state.images_choice)
 
-    total_words = []
-    #res = Image2DB.fetch()
-    # all_items = res.items
-    for item in all_items2:
-        total_words.append(item.get('words'))
+    if st.session_state.i == 1:
+        total_words = []
+        for item in all_items1:
+            total_words.append(item.get('words'))
+            
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
 
-    text = " ".join(total_words)
-    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-    fig = plt.imshow(word_cloud, interpolation='bilinear')
-    plt.axis("off")
-    st.pyplot(plt.show())
+    if st.session_state.i == 2:
+        total_words = []
+        for item in all_items2:
+            total_words.append(item.get('words'))
 
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
 
-    total_words = []
-    #res = Image2DB.fetch()
-    # all_items = res.items
-    for item in all_items3:
-        total_words.append(item.get('words'))
+    if st.session_state.i == 3:
+        total_words = []
+        for item in all_items3:
+            total_words.append(item.get('words'))
 
-    text = " ".join(total_words)
-    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-    fig = plt.imshow(word_cloud, interpolation='bilinear')
-    plt.axis("off")
-    st.pyplot(plt.show())
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
 
-    total_words = []
-    #res = Image1DB.fetch()
-    #all_items = res.items
-    for item in all_items4:
-        total_words.append(item.get('words'))
-        
-    text = " ".join(total_words)
-    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-    fig = plt.imshow(word_cloud, interpolation='bilinear')
-    plt.axis("off")
-    st.pyplot(plt.show())
+    if st.session_state.i == 4:
+        total_words = []
+        for item in all_items4:
+            total_words.append(item.get('words'))
+            
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
 
-    total_words = []
-    #res = Image2DB.fetch()
-    # all_items = res.items
-    for item in all_items5:
-        total_words.append(item.get('words'))
+    if st.session_state.i == 5:
+        total_words = []
+        for item in all_items5:
+            total_words.append(item.get('words'))
 
-    text = " ".join(total_words)
-    word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
-    fig = plt.imshow(word_cloud, interpolation='bilinear')
-    plt.axis("off")
-    st.pyplot(plt.show())
+        text = " ".join(total_words)
+        word_cloud = WordCloud(collocations = False, background_color = 'white').generate(text)
+        fig = plt.imshow(word_cloud, interpolation='bilinear')
+        plt.axis("off")
+        st.pyplot(plt.show())
 
 
 
