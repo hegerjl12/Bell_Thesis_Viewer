@@ -45,9 +45,6 @@ st.set_page_config(
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
-st.title("Selina's Thesis")
-
-
 # connect to databases
 with st.spinner("Connecting to database..."):
      deta = Deta(st.secrets["deta_key"])
