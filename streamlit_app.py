@@ -63,7 +63,7 @@ with st.container():
 
     st.session_state.i = (st.session_state.i + 1) % 6 #random.choice(st.session_state.images_choice)
 
-    st.write(st.session_state.i)
+    #st.write(st.session_state.i)
 
     if st.session_state.i == 1:
         total_words = []
