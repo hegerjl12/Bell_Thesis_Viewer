@@ -61,8 +61,9 @@ with st.container():
        
     all_items1, all_items2, all_items3, all_items4, all_items5 = refreshDB()  
 
-    st.session_state.i = (st.session_state.i + 1) % 6 #random.choice(st.session_state.images_choice)
+    st.session_state.i = (st.session_state.i + 1) % 6 
 
+    #random.choice(st.session_state.images_choice)
     #st.write(st.session_state.i)
 
     if st.session_state.i == 1:
@@ -126,5 +127,3 @@ with st.container():
 
 
 count = st_autorefresh(interval=10000, limit=100, key="fizzbuzzcounter")
-#time.sleep(10)
-#st.experimental_rerun()
