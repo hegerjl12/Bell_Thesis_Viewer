@@ -13,7 +13,7 @@ if 'images_choice' not in st.session_state:
      st.session_state.images_choice = [1, 2, 3, 4, 5]
 
 if 'i' not in st.session_state:
-     st.session_state.i = 1
+     st.session_state.i = 0
     
 def refreshDB():
 
@@ -54,12 +54,14 @@ with st.spinner("Connecting to database..."):
      Image4DB = deta.Base("image4db")
      Image5DB = deta.Base("image5db")
 
+
+
 # make columns
 with st.container():
        
     all_items1, all_items2, all_items3, all_items4, all_items5 = refreshDB()  
 
-    st.session_state.i = random.choice(st.session_state.images_choice)
+    st.session_state.i = (st.session_state.i + 1) % 6 #random.choice(st.session_state.images_choice)
 
     if st.session_state.i == 1:
         total_words = []
@@ -115,6 +117,9 @@ with st.container():
         fig = plt.imshow(word_cloud, interpolation='bilinear')
         plt.axis("off")
         st.pyplot(plt.show())
+
+    if st.session_state.i == 0:
+        st.experimental_rerun()
 
 
 
