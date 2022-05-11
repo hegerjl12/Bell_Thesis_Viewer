@@ -126,4 +126,4 @@ with st.container():
 
 
 
-count = st_autorefresh(interval=10000, limit=100, key="fizzbuzzcounter")
+count = st_autorefresh(interval=10000, limit=1000, key="fizzbuzzcounter")
